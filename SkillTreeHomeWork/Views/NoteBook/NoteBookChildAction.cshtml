@@ -1,11 +1,17 @@
 ﻿@model  List < SkillTreeHomeWork.Models.ViewModels.NoteBookModels>
 
+@{
+    ViewBag.Title = "Note Book Child Action";
+    Layout = null;
+}
+
 @foreach (var NoteBookModel in Model)
 {
     <div class="css_tr">
-        <div class="css_td">@NoteBookModel.NoteBookID</div>
+        <div class="css_td">@NoteBookModel.NoteBookID</div >
         <div class="css_td">@NoteBookModel.Category</div>
         <div class="css_td">@NoteBookModel.Date</div>
         <div class="css_td">@NoteBookModel.Money</div>
     </div>
 }
+

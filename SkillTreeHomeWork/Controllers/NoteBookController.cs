@@ -7,12 +7,12 @@ using SkillTreeHomeWork.Models.ViewModels;
 
 namespace SkillTreeHomeWork.Controllers
 {
-    public class Day1Controller : Controller
+    public class NoteBookController : Controller
     {
-        // GET: Day1
+        // GET: NoteBook
         public ActionResult Index()
         {
-            List<Day1> viewModelDay1 = new List<Day1>();
+            List<NoteBookModels> viewModelNoteBook = new List<NoteBookModels>();
 
             for (int i = 0; i < 5; i++)
             {
@@ -23,24 +23,24 @@ namespace SkillTreeHomeWork.Controllers
                     strCategory = "收入";
                 }
 
-                var model = new Day1
+                var model = new NoteBookModels
                 {
-                    Day1ID = i,
+                    NoteBookID = 1000 + i,
                     Category = strCategory,
                     Money = 1000 * i,
                     Date = DateTime.Now.AddDays(i)
                 };
 
-                viewModelDay1.Add(model);
+                viewModelNoteBook.Add(model);
             }
 
-            return View(viewModelDay1);
+            return View(viewModelNoteBook);
         }
 
         [ChildActionOnly]
-        public ActionResult Day1ChildAction()
+        public ActionResult NoteBookChildAction()
         {
-            List<Day1> viewModelDay1 = new List<Day1>();
+            List<NoteBookModels> viewModelNoteBook = new List<NoteBookModels>();
 
             for (int i = 0; i < 10; i++)
             {
@@ -51,18 +51,18 @@ namespace SkillTreeHomeWork.Controllers
                     strCategory = "收入";
                 }
 
-                var model = new Day1
+                var model = new NoteBookModels
                 {
-                    Day1ID = i,
+                    NoteBookID = i,
                     Category = strCategory,
                     Money = 1000 * i,
                     Date = DateTime.Now.AddDays(i)
                 };
 
-                viewModelDay1.Add(model);
+                viewModelNoteBook.Add(model);
             }
             
-            return View(viewModelDay1);
+            return View(viewModelNoteBook);
         }
 
 

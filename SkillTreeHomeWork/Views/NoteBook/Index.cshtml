@@ -1,7 +1,7 @@
-﻿@model  List<SkillTreeHomeWork.Models.ViewModels.Day1>
+﻿@model  List<SkillTreeHomeWork.Models.ViewModels.NoteBookModels>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Day1Layout.cshtml";
+    Layout = "~/Views/Shared/_NoteBookLayout.cshtml";
 }
 <h2>SkillTree Day1 Home Work</h2>
 
@@ -51,7 +51,7 @@
             <div class="css_td">日期</div>
             <div class="css_td">金額</div>
         </div>
-        @Html.Action("Day1ChildAction")
+        @Html.Action("NoteBookChildAction")
     </div>
 </div>
 <h2>Partial</h2>

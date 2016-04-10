@@ -16,7 +16,7 @@ namespace SkillTreeHomeWork
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Day1", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "NoteBook", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

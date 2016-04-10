@@ -5,9 +5,9 @@ using System.Web;
 
 namespace SkillTreeHomeWork.Models.ViewModels
 {
-    public class Day1
+    public class NoteBookModels
     {
-        public int Day1ID { get; set; }
+        public int NoteBookID { get; set; }
         public string Category { get; set; }
         public int Money { get; set; }
         public DateTime Date { get; set; }
