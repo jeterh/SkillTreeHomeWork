@@ -1,0 +1,17 @@
+﻿@model  List < SkillTreeHomeWork.Models.ViewModels.Day1>
+
+@{
+    ViewBag.Title = "Day1 Child Action";
+    Layout = null;
+}
+
+@foreach (var day1Model in Model)
+{
+    <div class="css_tr">
+        <div class="css_td">@day1Model.Day1ID</div >
+        <div class="css_td">@day1Model.Category</div>
+        <div class="css_td">@day1Model.Date</div>
+        <div class="css_td">@day1Model.Money</div>
+    </div>
+}
+
