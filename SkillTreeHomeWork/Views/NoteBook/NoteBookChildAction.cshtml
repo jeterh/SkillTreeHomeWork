@@ -5,13 +5,20 @@
     Layout = null;
 }
 
-@foreach (var NoteBookModel in Model)
-{
-    <div class="css_tr">
-        <div class="css_td">@NoteBookModel.NoteBookID</div >
-        <div class="css_td">@NoteBookModel.Category</div>
-        <div class="css_td">@NoteBookModel.Date</div>
-        <div class="css_td">@NoteBookModel.Money</div>
-    </div>
-}
-
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>類別</th>
+        <th>日期</th>
+        <th>金額</th>
+    </tr>
+    @foreach (var NoteBookModel in Model)
+    {
+        <tr>
+            <td width="25%">@NoteBookModel.NoteBookID</td>
+            <td width="25%">@Html.Label(@NoteBookModel.Category)</td>
+            <td width="25%">@Html.Label(@NoteBookModel.Date.ToString("yyyy-MM-dd"))</td>
+            <td width="25%">@Html.Label(@NoteBookModel.Money.ToString())</td>
+        </tr>
+    }
+</table>

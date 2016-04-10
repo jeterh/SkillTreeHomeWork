@@ -43,47 +43,10 @@
     </form>
 </div>
 <h2>Child Action</h2>
-<div class="well">
-    <div id="css_table">
-        <div class="css_tr">
-            <div class="css_td">#</div>
-            <div class="css_td">類別</div>
-            <div class="css_td">日期</div>
-            <div class="css_td">金額</div>
-        </div>
-        @Html.Action("NoteBookChildAction")
-    </div>
-</div>
+@Html.Action("NoteBookChildAction")
+
 <h2>Partial</h2>
-<div class="well">
-    <div id="css_table">
-        <div class="css_tr">
-            <div class="css_td">#</div>
-            <div class="css_td">類別</div>
-            <div class="css_td">日期</div>
-            <div class="css_td">金額</div>
-        </div>
-        @Html.Partial("_Partial",Model)
-    </div>
-</div>
-<style>
-    #css_table {
-        display: table;
-        border: 1px solid #c3c3c3;
-        width:100%;
-    }
-
-    .css_tr {
-        display: table-row;
-        border: 1px solid #c3c3c3;
-    }
-
-    .css_td {
-        display: table-cell;
-        border: 1px solid #c3c3c3;
-        width:25%;
-    }
-</style>
+@Html.Partial("_Partial",Model)
 
 
 
