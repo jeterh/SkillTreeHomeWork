@@ -284,6 +284,7 @@
     <Content Include="Views\Shared\_Partial.cshtml" />
     <Content Include="Views\AccountBook\AccountBookChildAction.cshtml" />
     <Content Include="Views\AccountBook\Index.cshtml" />
+    <Content Include="Views\Shared\_AccountBookLayout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
