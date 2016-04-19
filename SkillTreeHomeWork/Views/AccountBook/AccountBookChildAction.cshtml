@@ -1,0 +1,34 @@
+﻿@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookModel>
+@{
+    ViewBag.Title = "Note Book Child Action";
+    Layout = null;
+    int AccountNumber = 0;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>編號</th>
+        <th>類別</th>
+        <th>日期</th>
+        <th>金額</th>
+    </tr>
+    @foreach (var AccountBookModel in Model)
+    {
+        <tr>
+            <td width="25%">@(++AccountNumber) @Html.Hidden(@AccountBookModel.Id.ToString())</td>
+            <td width="25%">
+                @if (AccountBookModel.Category == 0)
+                {
+                    @Html.Label("支出")
+                }
+                else
+                {
+                    @Html.Label("收入")
+                }
+            </td>
+            <td width="25%">@Html.Label(@AccountBookModel.Date.ToString("yyyy-MM-dd"))</td>
+            <td width="25%">@Html.Label(@AccountBookModel.Amount.ToString())</td>
+            
+        </tr>
+    }
+</table>
