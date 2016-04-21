@@ -23,5 +23,10 @@ namespace SkillTreeHomeWork.Controllers
             return View(db.AccountBook.Take(10).ToList());
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
