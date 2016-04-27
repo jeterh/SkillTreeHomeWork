@@ -35,8 +35,9 @@ namespace SkillTreeHomeWork.Models.ViewModels
 
         [Display(Name = "備註")]
         [Required]
-        [StringLength(100)]
+        //[StringLength(100)]
         [DataType(DataType.MultilineText)]
+        [MultilineTextLimitAttribute(100)]
         public string Remark { get; set; }
     }
 }
