@@ -1,4 +1,4 @@
-﻿@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookModel>
+﻿@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookModels>
 @{
     ViewBag.Title = "Note Book Child Action";
     Layout = null;
@@ -12,12 +12,12 @@
         <th>日期</th>
         <th>金額</th>
     </tr>
-    @foreach (var AccountBookModel in Model)
+    @foreach (var AccountBookModels in Model)
     {
         <tr>
-            <td width="25%">@(++AccountNumber) @Html.Hidden(@AccountBookModel.Id.ToString())</td>
+            <td width="25%">@(++AccountNumber) @Html.Hidden(@AccountBookModels.Id.ToString())</td>
             <td width="25%">
-                @if (AccountBookModel.Category == 0)
+                @if (AccountBookModels.Category == 0)
                 {
                     @Html.Label("支出")
                 }
@@ -26,9 +26,9 @@
                     @Html.Label("收入")
                 }
             </td>
-            <td width="25%">@Html.Label(@AccountBookModel.Date.ToString("yyyy-MM-dd"))</td>
-            <td width="25%">@Html.Label(@AccountBookModel.Amount.ToString())</td>
-            
+            <td width="25%">@Html.Label(@AccountBookModels.Date.ToString("yyyy-MM-dd"))</td>
+            <td width="25%">@Html.Label(@AccountBookModels.Amount.ToString())</td>
+
         </tr>
     }
 </table>

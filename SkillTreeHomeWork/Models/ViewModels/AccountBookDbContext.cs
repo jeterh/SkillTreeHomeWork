@@ -12,7 +12,7 @@ namespace SkillTreeHomeWork.Models.ViewModels
         {
         }
 
-        public virtual DbSet<AccountBookModel> AccountBook { get; set; }
+        public virtual DbSet<AccountBookModels> AccountBook { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
