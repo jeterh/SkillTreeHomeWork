@@ -17,14 +17,7 @@
         <tr>
             <td width="25%">@(++AccountNumber) @Html.Hidden(@AccountBookModels.Id.ToString())</td>
             <td width="25%">
-                @if (AccountBookModels.Category == 0)
-                {
-                    @Html.Label("支出")
-                }
-                else
-                {
-                    @Html.Label("收入")
-                }
+                @MyHelpers.DisplayCategoryColor(AccountBookModels.Category)
             </td>
             <td width="25%">@Html.Label(@AccountBookModels.Date.ToString("yyyy-MM-dd"))</td>
             <td width="25%">@Html.Label(@AccountBookModels.Amount.ToString())</td>

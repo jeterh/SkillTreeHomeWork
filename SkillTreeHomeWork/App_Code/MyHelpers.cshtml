@@ -1,0 +1,18 @@
+﻿@*@helper HelperName(string name) {
+    // 您的協助程式可包含程式碼和/或標記，例如
+    // var msg = "Hello " + name;
+    // <p>@msg</p>
+    // 如需詳細資訊請造訪 http://go.microsoft.com/fwlink/?LinkID=204658
+}*@
+
+@helper DisplayCategoryColor(Decimal category)
+{
+    if (category == 0)
+    {
+        <div style="color:red">支出</div>
+    }
+    else
+    {
+        <div style="color:blue">收入</div>
+    }
+}
