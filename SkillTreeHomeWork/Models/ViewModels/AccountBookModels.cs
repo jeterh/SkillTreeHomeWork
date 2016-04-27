@@ -8,6 +8,7 @@ namespace SkillTreeHomeWork.Models.ViewModels
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using SkillTreeHomeWork.Models.CustomValidationAttribute;
 
     [Table("AccountBook")]
     public partial class AccountBookModels
@@ -29,6 +30,7 @@ namespace SkillTreeHomeWork.Models.ViewModels
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [DataType(DataType.Date)]
+        [DateBeforeToday]
         public DateTime Date { get; set; }
 
         [Display(Name = "備註")]
