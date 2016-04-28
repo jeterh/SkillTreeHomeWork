@@ -6,12 +6,22 @@ using System.Web.Mvc;
 using SkillTreeHomeWork.Models.ViewModels;
 using System.Data.Entity;
 using System.Net;
+using SkillTreeHomeWork.Service;
+using SkillTreeHomeWork.Repositories;
 
 namespace SkillTreeHomeWork.Controllers
 {
     public class AccountBookController : Controller
     {
-        private AccountBookDbContext db = new AccountBookDbContext();
+        private readonly AccountBookService _accountBookSvc;
+
+        //private AccountBookDbContext db = new AccountBookDbContext();
+
+        public AccountBookController()
+        {
+            var unitOfWork = new EFUnitOfWork();
+            _accountBookSvc = new AccountBookService(unitOfWork);
+        }
 
         // GET: AccountBook
         public ActionResult Index()
@@ -22,7 +32,9 @@ namespace SkillTreeHomeWork.Controllers
         [ChildActionOnly]
         public ActionResult AccountBookChildAction()
         {
-            return View(db.AccountBook.Take(10).OrderByDescending(x => x.Date).ToList());
+            var source = _accountBookSvc.Lookup();
+            return View(source.OrderByDescending(x=> x.Date).Take(10).ToList());
+            //return View(db.AccountBook.Take(10).OrderByDescending(x => x.Date).ToList());
         }
 
         // POST: AccountBook/Index
@@ -30,26 +42,46 @@ namespace SkillTreeHomeWork.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookModels accountBookModels)
+        public ActionResult Index([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookViewModels accountBookViewModels)
         {
+            //if (ModelState.IsValid)
+            //{
+                //accountBookModels.Id = Guid.NewGuid();
+                //db.AccountBook.Add(accountBookModels);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
+            //}
+
+            //return View(accountBookModels);
+
             if (ModelState.IsValid)
             {
-                accountBookModels.Id = Guid.NewGuid();
-                db.AccountBook.Add(accountBookModels);
-                db.SaveChanges();
+                accountBookViewModels.Id = Guid.NewGuid();
+                _accountBookSvc.Add(accountBookViewModels);
+                _accountBookSvc.Save();
+
                 return RedirectToAction("Index");
             }
 
-            return View(accountBookModels);
+            var result = new AccountBookViewModels()
+            {
+                Id = accountBookViewModels.Id,
+                Amount = accountBookViewModels.Amount,
+                Category = accountBookViewModels.Category,
+                Date = accountBookViewModels.Date,
+                Remark = accountBookViewModels.Remark
+            };
+
+            return View(result);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
