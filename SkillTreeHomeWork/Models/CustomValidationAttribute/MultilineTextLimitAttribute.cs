@@ -17,6 +17,12 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
         
        protected sealed override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            //權責分清楚，沒有輸入不算錯
+            if (value == null)
+            {
+                return ValidationResult.Success;
+            }
+
             if (value.ToString().Length > _strLength)
             {
                 return new ValidationResult(string.Format("文字長度不得超過{0}字。", _strLength));

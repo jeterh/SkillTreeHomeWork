@@ -10,9 +10,10 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
     {
         protected sealed override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            //權責分清楚，沒有輸入不算錯
             if (value == null)
             {
-                return new ValidationResult("請輸入日期。");
+                return ValidationResult.Success;
             }
 
             DateTime myDateTime = DateTime.Parse(value.ToString());              
