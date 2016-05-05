@@ -15,7 +15,7 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
             _strLength = length;
         }
         
-       protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+       protected sealed override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value.ToString().Length > _strLength)
             {
