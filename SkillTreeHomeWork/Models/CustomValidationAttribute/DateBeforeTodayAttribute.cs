@@ -16,13 +16,16 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
                 return ValidationResult.Success;
             }
 
-            DateTime myDateTime = DateTime.Parse(value.ToString());              
-
-            if (DateTime.Compare(myDateTime.Date, DateTime.Now.Date) == 1)
+            if (value is DateTime)
             {
-                return new ValidationResult("日期不得大於今天。");
-            }
+                DateTime myDateTime = DateTime.Parse(value.ToString());
 
+                if (DateTime.Compare(myDateTime.Date, DateTime.Now.Date) == 1)
+                {
+                    return new ValidationResult("日期不得大於今天。");
+                }
+            }
+            
             return ValidationResult.Success;
         }
     }

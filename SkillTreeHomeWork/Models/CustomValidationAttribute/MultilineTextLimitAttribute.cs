@@ -22,12 +22,15 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
             {
                 return ValidationResult.Success;
             }
-
-            if (value.ToString().Length > _strLength)
+            
+            if (value is string)
             {
-                return new ValidationResult(string.Format("文字長度不得超過{0}字。", _strLength));
+                if (value.ToString().Length > _strLength)
+                {
+                    return new ValidationResult(string.Format("文字長度不得超過{0}字。", _strLength));
+                }
             }
-
+            
             return ValidationResult.Success;
         }
 
