@@ -8,7 +8,7 @@ namespace SkillTreeHomeWork.Models.CustomValidationAttribute
 {
     public class DateBeforeTodayAttribute : ValidationAttribute
     {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected sealed override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value == null)
             {
