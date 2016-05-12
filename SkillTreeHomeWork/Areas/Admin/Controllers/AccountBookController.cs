@@ -26,7 +26,6 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
         // GET: Admin/AccountBook
         public ActionResult Index()
         {
-            //return View();
             var source = _accountBookSvc.Lookup();
             return View(source.OrderByDescending(x => x.Date).ToList());
         }
@@ -57,17 +56,28 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookModels accountBookModels)
+
+        public ActionResult Create([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookViewModels accountBookViewModels)
         {
             if (ModelState.IsValid)
             {
-                accountBookModels.Id = Guid.NewGuid();
-                db.AccountBook.Add(accountBookModels);
-                db.SaveChanges();
+                accountBookViewModels.Id = Guid.NewGuid();
+                _accountBookSvc.Add(accountBookViewModels);
+                _accountBookSvc.Save();
+
                 return RedirectToAction("Index");
             }
 
-            return View(accountBookModels);
+            var result = new AccountBookViewModels()
+            {
+                Id = accountBookViewModels.Id,
+                Amount = accountBookViewModels.Amount,
+                Category = accountBookViewModels.Category,
+                Date = accountBookViewModels.Date,
+                Remark = accountBookViewModels.Remark
+            };
+
+            return View(accountBookViewModels);
         }
 
         // GET: Admin/AccountBook/Edit/5
