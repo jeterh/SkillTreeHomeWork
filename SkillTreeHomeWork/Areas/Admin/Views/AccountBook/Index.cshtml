@@ -1,51 +1,34 @@
-﻿@model IEnumerable<SkillTreeHomeWork.Models.ViewModels.AccountBookModels>
+﻿@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookViewModels>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Area Account Book Index";
+    int AccountNumber = 0;
 }
 
-<h2>Index</h2>
+<h2>Area Account Book Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-bordered table-hover">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Remark)
-        </th>
         <th></th>
+        <th>編號</th>
+        <th>類別</th>
+        <th>日期</th>
+        <th>金額</th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remark)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+    @foreach (var AccountBookModels in Model)
+    {
+        <tr>
+            <td width="15%">
+                @Html.ActionLink("Edit", "Edit", new { id = @AccountBookModels.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = @AccountBookModels.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = @AccountBookModels.Id })
+            </td>
+            <td width="15%">@(++AccountNumber) @Html.Hidden(@AccountBookModels.Id.ToString())</td>
+            <td width="20%">
+                @MyHelpers.DisplayCategoryColor(AccountBookModels.Category)
+            </td>
+            <td width="25%">@Html.Label(@AccountBookModels.Date.ToString("yyyy-MM-dd"))</td>
+            <td width="25%">@Html.Label(@AccountBookModels.Amount.ToString())</td>
+        </tr>
+    }
 </table>
