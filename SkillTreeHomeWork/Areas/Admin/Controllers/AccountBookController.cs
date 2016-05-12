@@ -17,7 +17,9 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
         // GET: Admin/AccountBook
         public ActionResult Index()
         {
-            return View(db.AccountBook.ToList());
+            //return View();
+            var source = _accountBookSvc.Lookup();
+            return View(source.OrderByDescending(x => x.Date).ToList());
         }
 
         // GET: Admin/AccountBook/Details/5
