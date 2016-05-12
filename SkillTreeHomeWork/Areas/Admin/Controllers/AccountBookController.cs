@@ -7,12 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SkillTreeHomeWork.Models.ViewModels;
+using SkillTreeHomeWork.Service;
+using SkillTreeHomeWork.Repositories;
 
 namespace SkillTreeHomeWork.Areas.Admin.Controllers
 {
     public class AccountBookController : Controller
     {
+        private readonly AccountBookService _accountBookSvc;
         private AccountBookDbContext db = new AccountBookDbContext();
+
+        public AccountBookController()
+        {
+            var unitOfWork = new EFUnitOfWork();
+            _accountBookSvc = new AccountBookService(unitOfWork);
+        }
 
         // GET: Admin/AccountBook
         public ActionResult Index()
