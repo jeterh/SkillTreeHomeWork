@@ -33,6 +33,11 @@ namespace SkillTreeHomeWork.Repositories
             return ObjectSet;
         }
 
+        public T LookupByGuid(Guid? guid)
+        {
+            return ObjectSet.Find(guid);
+        }
+
         public IQueryable<T> Query(Expression<Func<T, bool>> filter)
         {
             return ObjectSet.Where(filter);
@@ -46,6 +51,11 @@ namespace SkillTreeHomeWork.Repositories
         public void Create(T entity)
         {
             ObjectSet.Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            UnitOfWork.Context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Remove(T entity)

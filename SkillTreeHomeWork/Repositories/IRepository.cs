@@ -19,6 +19,11 @@ namespace SkillTreeHomeWork.Repositories
         /// <returns>IQueryable&lt;T&gt;.</returns>
         IQueryable<T> LookupAll();
         /// <summary>
+        /// Lookup By Guid
+        /// </summary>
+        /// <returns></returns>
+        T LookupByGuid(Guid? guid);
+        /// <summary>
         /// 搜尋
         /// </summary>
         /// <returns></returns>
@@ -34,6 +39,11 @@ namespace SkillTreeHomeWork.Repositories
         /// </summary>
         /// <param name="entity"></param>
         void Create(T entity);
+        /// <summary>
+        /// 更新一個entity
+        /// </summary>
+        /// <param name="entity"></param>
+        void Update(T entity);
         /// <summary>
         /// 刪除單一entity
         /// </summary>
