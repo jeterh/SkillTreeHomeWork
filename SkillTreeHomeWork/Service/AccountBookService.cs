@@ -32,6 +32,27 @@ namespace SkillTreeHomeWork.Service
             return result;
         }
 
+        public new AccountBookViewModels LookupByGuid(Guid? id)
+        {           
+            var source = _accountBookRep.LookupByGuid(id);
+
+            if (source == null)
+            {
+                return null;
+            }
+
+            var result = new AccountBookViewModels()
+            {
+                Id = source.Id,
+                Amount = source.Amount,
+                Date = source.Date,
+                Category = source.Category,
+                Remark = source.Remark
+            };
+
+            return result;
+        }
+
         public void Add(AccountBookViewModels accountBook)
         {
             var result = new AccountBookModels()
@@ -46,10 +67,23 @@ namespace SkillTreeHomeWork.Service
             _accountBookRep.Create(result);
         }
 
+        public void Edit(AccountBookViewModels accountBook)
+        {
+            var result = new AccountBookModels()
+            {
+                Id = accountBook.Id,
+                Amount = accountBook.Amount,
+                Date = accountBook.Date,
+                Category = accountBook.Category,
+                Remark = accountBook.Remark
+            };
+
+            _accountBookRep.Update(result);
+        }
+
         public void Save()
         {
             _accountBookRep.Commit();
         }
-
     }
 }
