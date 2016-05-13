@@ -87,12 +87,14 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountBookModels accountBookModels = db.AccountBook.Find(id);
-            if (accountBookModels == null)
+
+            AccountBookViewModels accountBookViewModels = _accountBookSvc.LookupByGuid(id);
+            
+            if (accountBookViewModels == null)
             {
                 return HttpNotFound();
             }
-            return View(accountBookModels);
+            return View(accountBookViewModels);
         }
 
         // POST: Admin/AccountBook/Edit/5
@@ -100,15 +102,16 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookModels accountBookModels)
+        public ActionResult Edit([Bind(Include = "Id,Category,Amount,Date,Remark")] AccountBookViewModels accountBookViewModels)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(accountBookModels).State = EntityState.Modified;
-                db.SaveChanges();
+                _accountBookSvc.Edit(accountBookViewModels);
+                _accountBookSvc.Save();
+
                 return RedirectToAction("Index");
             }
-            return View(accountBookModels);
+            return View(accountBookViewModels);
         }
 
         // GET: Admin/AccountBook/Delete/5
