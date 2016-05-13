@@ -1,13 +1,12 @@
-﻿@model SkillTreeHomeWork.Models.ViewModels.AccountBookModels
+﻿@model SkillTreeHomeWork.Models.ViewModels.AccountBookViewModels
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Area Account Book Details";
 }
 
-<h2>Details</h2>
+<h2>Area Account Book Details</h2>
 
 <div>
-    <h4>AccountBookModels</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -15,6 +14,8 @@
         </dt>
 
         <dd>
+            @*請問老師我想要延用MyHelpers.DisplayCategoryColor該怎麼讓model => model.Category變成Decimal parameter? *@
+            @*@MyHelpers.DisplayCategoryColor( model => model.Category)*@
             @Html.DisplayFor(model => model.Category)
         </dd>
 

@@ -37,12 +37,15 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountBookModels accountBookModels = db.AccountBook.Find(id);
-            if (accountBookModels == null)
+
+            AccountBookViewModels accountBookViewModels = _accountBookSvc.LookupByGuid(id);
+
+            if (accountBookViewModels == null)
             {
                 return HttpNotFound();
             }
-            return View(accountBookModels);
+
+            return View(accountBookViewModels);
         }
 
         // GET: Admin/AccountBook/Create
