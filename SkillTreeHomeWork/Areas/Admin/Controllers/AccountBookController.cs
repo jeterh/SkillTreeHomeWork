@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using SkillTreeHomeWork.Models.ViewModels;
 using SkillTreeHomeWork.Service;
 using SkillTreeHomeWork.Repositories;
+using SkillTreeHomeWork.Filter;
 
 namespace SkillTreeHomeWork.Areas.Admin.Controllers
 {
+    [AuthorizePlus(Users = @"test@test.com.tw")]
     public class AccountBookController : Controller
     {
         private readonly AccountBookService _accountBookSvc;
