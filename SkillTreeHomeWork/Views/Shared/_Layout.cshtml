@@ -26,6 +26,7 @@
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
                     <li>@Html.ActionLink("AccountBook", "Index", "AccountBook")</li>
+                    <li>@Html.ActionLink("Area AccountBook", "Index", "AccountBook", new { Area = "Admin" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
