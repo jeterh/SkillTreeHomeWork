@@ -30,6 +30,20 @@ namespace SkillTreeHomeWork.Filter
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
+            else
+            {
+                //非認證人員，導向首頁
+                if (AuthorizeCore(filterContext.HttpContext) == false)
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                       new RouteValueDictionary
+                       {
+                            { "action", "Index" },
+                            { "controller", "Home" },
+                            { "area", "" }
+                        });
+                }
+            }
 
             //驗證是否是授權的連線，並且是 AJAX 呼叫。
             if (filterContext.Result is HttpUnauthorizedResult && filterContext.HttpContext.Request.IsAjaxRequest())
