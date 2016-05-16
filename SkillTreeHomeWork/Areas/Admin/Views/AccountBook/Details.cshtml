@@ -14,9 +14,7 @@
         </dt>
 
         <dd>
-            @*請問老師我想要延用MyHelpers.DisplayCategoryColor該怎麼讓model => model.Category變成Decimal parameter? *@
-            @*@MyHelpers.DisplayCategoryColor( model => model.Category)*@
-            @Html.DisplayFor(model => model.Category)
+            @MyHelpers.DisplayCategoryColor(@Model.Category)
         </dd>
 
         <dt>
