@@ -24,10 +24,8 @@
                 @Html.ActionLink("Delete", "Delete", new { id = @AccountBookModels.Id })
             </td>
             <td width="15%">@(++AccountNumber) @Html.Hidden(@AccountBookModels.Id.ToString())</td>
-            <td width="20%">
-                @MyHelpers.DisplayCategoryColor(AccountBookModels.Category)
-            </td>
-            <td width="25%">@Html.Label(@AccountBookModels.Date.ToString("yyyy-MM-dd"))</td>
+            <td width="20%">@MyHelpers.DisplayCategoryColor(AccountBookModels.Category)</td>
+            <td width="25%">@Html.DisplayFor(modelItem => AccountBookModels.Date)</td>
             <td width="25%">@Html.Label(@AccountBookModels.Amount.ToString())</td>
         </tr>
     }

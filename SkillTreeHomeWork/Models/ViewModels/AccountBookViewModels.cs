@@ -24,9 +24,10 @@ namespace SkillTreeHomeWork.Models.ViewModels
 
         [Display(Name = "日期")]
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [DataType(DataType.Date)]
         [DateBeforeToday]
+        [UIHint("DateOnly")]
         public DateTime Date { get; set; }
 
         [Display(Name = "備註")]
