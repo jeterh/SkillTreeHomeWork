@@ -21,7 +21,7 @@ namespace SkillTreeHomeWork.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AccountBookDbContext", throwIfV1Schema: false)
         {
         }
 
