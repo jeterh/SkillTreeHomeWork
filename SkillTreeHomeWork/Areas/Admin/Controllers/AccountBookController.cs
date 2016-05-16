@@ -124,12 +124,13 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountBookModels accountBookModels = db.AccountBook.Find(id);
-            if (accountBookModels == null)
+            AccountBookViewModels accountBookViewModels = _accountBookSvc.LookupByGuid(id);
+
+            if (accountBookViewModels == null)
             {
                 return HttpNotFound();
             }
-            return View(accountBookModels);
+            return View(accountBookViewModels);
         }
 
         // POST: Admin/AccountBook/Delete/5
@@ -137,9 +138,16 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            AccountBookModels accountBookModels = db.AccountBook.Find(id);
-            db.AccountBook.Remove(accountBookModels);
-            db.SaveChanges();
+            AccountBookViewModels accountBookViewModels = _accountBookSvc.LookupByGuid(id);
+
+            if (accountBookViewModels == null)
+            {
+                return HttpNotFound();
+            }
+
+            _accountBookSvc.Remove(accountBookViewModels);
+            _accountBookSvc.Save();
+
             return RedirectToAction("Index");
         }
 

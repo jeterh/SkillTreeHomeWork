@@ -81,6 +81,20 @@ namespace SkillTreeHomeWork.Service
             _accountBookRep.Update(result);
         }
 
+        public void Remove(AccountBookViewModels accountBook)
+        {
+            var result = new AccountBookModels()
+            {
+                Id = accountBook.Id,
+                Amount = accountBook.Amount,
+                Date = accountBook.Date,
+                Category = accountBook.Category,
+                Remark = accountBook.Remark
+            };
+
+            _accountBookRep.Remove(result);
+        }
+
         public void Save()
         {
             _accountBookRep.Commit();
