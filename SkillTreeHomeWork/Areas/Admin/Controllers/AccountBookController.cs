@@ -15,7 +15,6 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
     public class AccountBookController : Controller
     {
         private readonly AccountBookService _accountBookSvc;
-        private AccountBookDbContext db = new AccountBookDbContext();
 
         public AccountBookController()
         {
@@ -149,15 +148,6 @@ namespace SkillTreeHomeWork.Areas.Admin.Controllers
             _accountBookSvc.Save();
 
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
