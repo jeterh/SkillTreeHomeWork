@@ -104,3 +104,10 @@ packages/pickadate.3.5.5/content/Scripts/pickadate/translations/sv_SE.js
 packages/pickadate.3.5.5/content/Scripts/pickadate/translations/ru_RU.js
 packages/pickadate.3.5.5/content/Scripts/pickadate/translations/sl_SI.js
 SkillTreeHomeWork/obj/Debug/SkillTreeHomeWork.pdb
+packages/PagedList.1.17.0.0/lib/net40/PagedList.dll
+packages/PagedList.1.17.0.0/lib/net40/PagedList.xml
+packages/PagedList.1.17.0.0/PagedList.1.17.0.0.nupkg
+packages/PagedList.Mvc.4.5.0.0/PagedList.Mvc.4.5.0.0.nupkg
+packages/PagedList.Mvc.4.5.0.0/lib/net40/PagedList.Mvc.dll
+packages/PagedList.Mvc.4.5.0.0/Content/Content/PagedList.css
+packages/PagedList.Mvc.4.5.0.0/lib/net40/PagedList.Mvc.XML
