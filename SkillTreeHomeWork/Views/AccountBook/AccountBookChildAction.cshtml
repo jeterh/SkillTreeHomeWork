@@ -1,4 +1,8 @@
-﻿@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookViewModels>
+﻿@using PagedList
+@using PagedList.Mvc
+@*@model  List<SkillTreeHomeWork.Models.ViewModels.AccountBookViewModels>*@
+@model IEnumerable<SkillTreeHomeWork.Models.ViewModels.AccountBookViewModels>
+
 @{
     ViewBag.Title = "Note Book Child Action";
     Layout = null;
@@ -25,3 +29,7 @@
         </tr>
     }
 </table>
+
+<nav>
+   @Html.PagedListPager((IPagedList)Model, d => Url.Action("index", new {page = d}))
+</nav>
