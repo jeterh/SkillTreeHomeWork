@@ -14,6 +14,20 @@ namespace SkillTreeHomeWork
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "skilltreeListYearSearch",
+                url: "skilltree/{year}",
+                defaults: new { controller = "AccountBook", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "SkillTreeHomeWork.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "skilltreeListYearAndMonthSearch",
+                url: "skilltree/{year}/{month}",
+                defaults: new { controller = "AccountBook", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "SkillTreeHomeWork.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "skilltreeIndex",
                 url: "skilltree",
                 defaults: new { controller = "AccountBook", action = "Index", id = UrlParameter.Optional },
