@@ -30,10 +30,27 @@ namespace SkillTreeHomeWork.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult AccountBookChildAction()
+        public ActionResult AccountBookChildAction(int? year, int? month)
         {
-            var source = _accountBookSvc.Lookup();
-            return View(source.OrderByDescending(x=> x.Date).Take(10).ToList());
+            IEnumerable<AccountBookViewModels> accountBookViewModels = Enumerable.Empty<AccountBookViewModels>();
+
+            if (year.HasValue && month.HasValue)
+            {
+                accountBookViewModels = _accountBookSvc.LookupByYearMonth(year, month);
+            }
+            else if (year.HasValue && !month.HasValue)
+            {
+                accountBookViewModels = _accountBookSvc.LookupByYear(year);
+            }
+            else
+            {
+                accountBookViewModels = _accountBookSvc.Lookup();
+            }
+
+            return View(accountBookViewModels.OrderByDescending(x => x.Date).ToList());
+                
+            //var source = _accountBookSvc.Lookup();
+            //return View(source.OrderByDescending(x => x.Date).ToList());
             //return View(db.AccountBook.Take(10).OrderByDescending(x => x.Date).ToList());
         }
 
