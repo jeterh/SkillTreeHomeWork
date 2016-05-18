@@ -33,6 +33,9 @@ namespace SkillTreeHomeWork.Controllers
         [ChildActionOnly]
         public ActionResult AccountBookChildAction(int? year, int? month, int? page)
         {
+            ViewBag.year = year.HasValue ? year : null;
+            ViewBag.month = month.HasValue ? month : null;
+
             IEnumerable<AccountBookViewModels> accountBookViewModels = Enumerable.Empty<AccountBookViewModels>();
 
             if (year.HasValue && month.HasValue)

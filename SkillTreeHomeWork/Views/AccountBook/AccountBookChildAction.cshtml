@@ -31,5 +31,9 @@
 </table>
 
 <nav>
-   @Html.PagedListPager((IPagedList)Model, d => Url.Action("index", new {page = d}))
+   @*修正使用Route查詢年月並且點選換頁時未正確載入設定的年及月，分頁查詢結果符合預期，但URL不符合預期。
+    預期應該為：http://localhost:54375/skilltree/2016/2/page=3
+    但實際變成此URL:http://localhost:54375/skilltree/2016?page=3&month=2
+    請問老師URL的路徑為何會跟預期的不相同? 我搞不清楚這是為何，謝謝。*@
+   @Html.PagedListPager((IPagedList)Model, d => Url.Action("index", new {page = d,year = ViewBag.year , month = ViewBag.month }))
 </nav>
